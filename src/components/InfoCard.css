@@ -1,5 +1,7 @@
 .wrapper {
   width: 100%;
+  position: relative;
+  margin: .25rem 0;
 }
 
 .progress-bar {
@@ -29,6 +31,14 @@
   font-weight: bold;
 }
 
+.progress-chest {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  right: -1rem;
+  top: -0.8rem;
+}
+
 .card {
   box-shadow: 0 0.5em 1em -0.125em rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.02);
   border-radius: .4rem;
@@ -46,6 +56,13 @@
 
 .card-username {
   flex: 1 1 auto;
+  color: #878190;
+  font-weight: bold;
+}
+
+.card-detail {
+  color: #9b4dca;
+  margin-right: 1rem;
 }
 
 .card-total-count {
@@ -55,5 +72,10 @@
 .card-title-wrap {
   display: flex;
   justify-content: space-between;
-  font-size: .75rem;
+  font-size: .5rem;
+}
+
+.card-rewards-text {
+  color: #E83E8C;
+  background-color: white;
 }

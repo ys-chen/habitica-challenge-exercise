@@ -3,55 +3,56 @@ import React, { useState, useEffect } from 'react';
 import 'milligram';
 import All from './components/All';
 import ExerciseWall from './components/ExerciseWall';
+import Loading from './components/Loading';
 import './App.css';
 
-const testData = [
-  {
-    "timestamp": "2020-10-31T09:34:20.072Z",
-    "email": "a0282213371@gmail.com",
-    "username": "fish_0903",
-    "strength": "高強度運動",
-    "exercise": "跑步",
-    "minutes": 30,
-    "picture": "https://drive.google.com/open?id=1sGUMcl3hv3jjlmvEr4cDoGFVtby1ZP25"
-  },
-  {
-    "timestamp": "2020-11-01T09:55:50.441Z",
-    "email": "a0282213371@gmail.com",
-    "username": "fish_0903",
-    "strength": "高強度運動",
-    "exercise": "跑步",
-    "minutes": 30,
-    "picture": "https://drive.google.com/open?id=17E8DWK-z7rBSroQnxSzLmiMyQEDYOs5z"
-  },
-  {
-    "timestamp": "2020-11-03T00:35:30.460Z",
-    "email": "sugjijigsu@gmail.com",
-    "username": "Jade_TW",
-    "strength": "高強度運動",
-    "exercise": "晨跑",
-    "minutes": 15,
-    "picture": "https://drive.google.com/open?id=1qidaUinF07ilNAe7rSBKfQgNMlJ3sY2H"
-  },
-  {
-    "timestamp": "2020-11-03T14:26:06.000Z",
-    "email": "yangsyuan8012@gmail.com",
-    "username": "Niko_TW",
-    "strength": "高強度運動",
-    "exercise": "Just Dance",
-    "minutes": 60,
-    "picture": "https://drive.google.com/open?id=1GTP_2dXm81y_ZCl-dJ-3atvNbOmAMRgs"
-  },
-  {
-    "timestamp": "2020-11-04T01:10:36.282Z",
-    "email": "sugjijigsu@gmail.com",
-    "username": "Jade_TW",
-    "strength": "高強度運動",
-    "exercise": "晨跑",
-    "minutes": 15,
-    "picture": "https://drive.google.com/open?id=1Za-m_Zu0oq6BHsTLcTiZdH9H2MQi1Y3T"
-  }
-]
+// const testData = [
+//   {
+//     "timestamp": "2020-10-31T09:34:20.072Z",
+//     "email": "a0282213371@gmail.com",
+//     "username": "fish_0903",
+//     "strength": "高強度運動",
+//     "exercise": "跑步",
+//     "minutes": 30,
+//     "picture": "https://drive.google.com/open?id=1sGUMcl3hv3jjlmvEr4cDoGFVtby1ZP25"
+//   },
+//   {
+//     "timestamp": "2020-11-01T09:55:50.441Z",
+//     "email": "a0282213371@gmail.com",
+//     "username": "fish_0903",
+//     "strength": "高強度運動",
+//     "exercise": "跑步",
+//     "minutes": 30,
+//     "picture": "https://drive.google.com/open?id=17E8DWK-z7rBSroQnxSzLmiMyQEDYOs5z"
+//   },
+//   {
+//     "timestamp": "2020-11-03T00:35:30.460Z",
+//     "email": "sugjijigsu@gmail.com",
+//     "username": "Jade_TW",
+//     "strength": "高強度運動",
+//     "exercise": "晨跑",
+//     "minutes": 15,
+//     "picture": "https://drive.google.com/open?id=1qidaUinF07ilNAe7rSBKfQgNMlJ3sY2H"
+//   },
+//   {
+//     "timestamp": "2020-11-03T14:26:06.000Z",
+//     "email": "yangsyuan8012@gmail.com",
+//     "username": "Niko_TW",
+//     "strength": "高強度運動",
+//     "exercise": "Just Dance",
+//     "minutes": 60,
+//     "picture": "https://drive.google.com/open?id=1GTP_2dXm81y_ZCl-dJ-3atvNbOmAMRgs"
+//   },
+//   {
+//     "timestamp": "2020-11-04T01:10:36.282Z",
+//     "email": "sugjijigsu@gmail.com",
+//     "username": "Jade_TW",
+//     "strength": "高強度運動",
+//     "exercise": "晨跑",
+//     "minutes": 15,
+//     "picture": "https://drive.google.com/open?id=1Za-m_Zu0oq6BHsTLcTiZdH9H2MQi1Y3T"
+//   }
+// ]
 
 function getStatistics(minutes, picture) {
   if (picture.length < 4) {
@@ -93,6 +94,7 @@ function getCardData(data) {
 }
 
 function getPictureData(data) {
+  const sortByTime = (x, y) => new Date(y.timestamp) - new Date(x.timestamp);
   const integrate = (picData, { username, exercise, picture, timestamp }) => {
     const i = picData.findIndex((pic) => pic.timestamp === timestamp.substring(0, 10));
     const picSrc = picture.replace('https://drive.google.com/open?id=', 'http://drive.google.com/uc?export=view&id=');
@@ -105,20 +107,23 @@ function getPictureData(data) {
     }
     return picData;
   };
-  return data.reduce(integrate, []);
+  return data.reduce(integrate, []).sort(sortByTime);
 }
 
 function App() {
   const [tab, setTab] = useState('all');
+  const [isLoading, setIsLoading] = useState('true');
   const [records, setRecords] = useState([]);
   const [cardData, setCardData] = useState([]);
   const switchTab = (e) => { setTab(e.target.dataset.tab) };
   const getRecords = async () => {
-    // const response = await fetch('https://script.google.com/macros/s/AKfycbx5rfuA8VCbSWDpYSnnvEwEFTVojlYDI474WM-ul-xYbJ7V8as/exec');
-    // const data = await response.json();
-    // setRecords(data);
-    setRecords(getPictureData(testData));
-    setCardData(getCardData(testData));
+    const response = await fetch('https://script.google.com/macros/s/AKfycbx5rfuA8VCbSWDpYSnnvEwEFTVojlYDI474WM-ul-xYbJ7V8as/exec');
+    const data = await response.json();
+    setIsLoading(false);
+    setRecords(getPictureData(data));
+    setCardData(getCardData(data));
+    // setRecords(getPictureData(testData));
+    // setCardData(getCardData(testData));
   };
 
   useEffect(() => { getRecords(); }, []);
@@ -129,6 +134,7 @@ function App() {
         <button data-tab="all" className={`button ${tab === 'all' ? '' : 'button-outline'}`} onClick={switchTab}>總覽</button>
         <button data-tab="wall" className={`button ${tab === 'wall' ? '' : 'button-outline'}`} onClick={switchTab}>運動牆</button>
       </div>
+      {isLoading && <Loading />}
       {tab === 'all' && <All cardData={cardData} />}
       {tab === 'wall' && <ExerciseWall records={records} />}
     </div>

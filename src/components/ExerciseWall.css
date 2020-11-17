@@ -6,7 +6,7 @@
 
 .timestamp-text {
   flex: 0 0 auto;
-  margin-bottom: 0;
+  margin: 0 1rem 0 0;
 }
 
 .timestamp-deco {
