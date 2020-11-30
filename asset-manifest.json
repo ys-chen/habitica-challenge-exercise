@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/habitica-challenge-exercise/static/css/main.c6fb038c.chunk.css",
+    "main.css": "/habitica-challenge-exercise/static/css/main.025c8359.chunk.css",
     "main.js": "/habitica-challenge-exercise/static/js/main.b4a61098.chunk.js",
     "main.js.map": "/habitica-challenge-exercise/static/js/main.b4a61098.chunk.js.map",
     "runtime-main.js": "/habitica-challenge-exercise/static/js/runtime-main.b10a5bdf.js",
@@ -12,7 +12,7 @@
     "static/js/3.16312bbb.chunk.js.map": "/habitica-challenge-exercise/static/js/3.16312bbb.chunk.js.map",
     "index.html": "/habitica-challenge-exercise/index.html",
     "static/css/2.026934d8.chunk.css.map": "/habitica-challenge-exercise/static/css/2.026934d8.chunk.css.map",
-    "static/css/main.c6fb038c.chunk.css.map": "/habitica-challenge-exercise/static/css/main.c6fb038c.chunk.css.map",
+    "static/css/main.025c8359.chunk.css.map": "/habitica-challenge-exercise/static/css/main.025c8359.chunk.css.map",
     "static/js/2.66f0436c.chunk.js.LICENSE.txt": "/habitica-challenge-exercise/static/js/2.66f0436c.chunk.js.LICENSE.txt",
     "static/media/chest.ba3e241b.svg": "/habitica-challenge-exercise/static/media/chest.ba3e241b.svg"
   },
@@ -20,7 +20,7 @@
     "static/js/runtime-main.b10a5bdf.js",
     "static/css/2.026934d8.chunk.css",
     "static/js/2.66f0436c.chunk.js",
-    "static/css/main.c6fb038c.chunk.css",
+    "static/css/main.025c8359.chunk.css",
     "static/js/main.b4a61098.chunk.js"
   ]
 }
