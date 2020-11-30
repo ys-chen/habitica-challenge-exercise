@@ -1,0 +1,31 @@
+.login-page {
+  height: 100vh;
+  background-color: rebeccapurple;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-form {
+  text-align: center;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.login-button {
+  margin-bottom: 0;
+}
+
+.login-fail {
+  border-color: red !important;
+}
+
+.login-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 30vh;
+  background: rgba(255, 255, 255, .6);
+}
