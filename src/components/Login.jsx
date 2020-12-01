@@ -26,18 +26,17 @@ function Login({ setIsLogin, setData }) {
 
   return (
     <div className="login-page">
-      <div className="login-content">
-        {isLoading ? (
-          <div className="login-loading">
-            <Loading />
-          </div>
-          ) : (
-          <form className="login-form">
-            <input type="password" id="nameField" onChange={handleChange} className={isError ? 'login-fail' : ''} />
-            <button className="button-primary login-button" onClick={auth}>ENTER</button>
-          </form>
-        )}
-      </div>
+      {isLoading ? (
+        <div className="login-loading">
+          <Loading />
+        </div>
+        ) : (
+        <form className="login-form">
+          <input type="password" id="nameField" onChange={handleChange} className={isError ? 'login-fail' : ''} />
+          <button className="button-primary login-button" onClick={auth}>ENTER</button>
+        </form>
+      )}
+      <a className="copyright" href='https://www.freepik.com/vectors/logo'>Logo vector created by freepik - www.freepik.com</a>
     </div>
   );
 }
